@@ -12,7 +12,7 @@ class Grid():
     def __init__(self, row, col):
         self.row = row
         self.col = col
-        self.grid = [[0] * col] * row 
+        self.grid = arr = [[0 for i in range(col)] for j in range(row)] 
     
     def getAdjecents(self, r, c):
 
@@ -25,9 +25,44 @@ class Grid():
             if (cc < 0 or rr < 0): continue
             if (cc >= self.row or rr >= self.col): continue
 
-            adjacents.append((cc, rr))
+            adjacents.insert(0, (cc, rr))
 
         return adjacents
+
+    def printGrid(self):
+        print()
+        for i in range(self.col):
+            for j in range(self.row):
+                print("(", end='')
+                print(i, j, end='')
+                print(")", end=' ')
+            print()
+    
+    def bfs(self, start, end):
+        path = []
+        queue = []
+
+        queue.append(start)
+        self.grid[start[0]][start[1]] = 1
+        self.grid[end[0]][end[1]] = 'E'
+
+        while queue:
+            
+            v = queue.pop()
+            path.append(v)
+            
+            for i in self.getAdjecents(v[0], v[1]):
+
+                if self.grid[i[0]][i[1]] == 'E':
+                    path.append(i)
+                    queue.clear()
+                    return path
+
+                if self.grid[i[0]][i[1]] != 1:
+                    queue.append(i)
+                    self.grid[i[0]][i[1]] = 1
+                    
+        return path
 
 
 "run test calss: $ python3 -m unittest -v grid_search"
@@ -37,7 +72,8 @@ class TestGridSearch(unittest.TestCase):
         self.g = Grid(3, 3)
 
     def test(self):
-        self.assertEqual(self.g.getAdjecents(2, 2), [(2, 1), (1, 2)])
+        self.g.printGrid()
+        self.assertEqual(self.g.bfs((0,0), (2,2)), [(0, 0),(1, 0),(1, 1),(2, 1),(2, 2)])
 
 if __name__ == '__main__':
     unittest.main()
