@@ -65,7 +65,7 @@ class Grid():
         return path
 
 
-"run test calss: $ python3 -m unittest -v grid_search"
+"run test class: $ python3 -m unittest -v grid_search"
 class TestGridSearch(unittest.TestCase):
 
     def setUp(self):

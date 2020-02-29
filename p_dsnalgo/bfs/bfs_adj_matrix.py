@@ -42,7 +42,7 @@ class Graph():
 
 
 
-"run test calss: $ python3 -m unittest -v bfs_adj_matrix"
+"run test class: $ python3 -m unittest -v bfs_adj_matrix"
 class TestBfs(unittest.TestCase):
     def setUp(self):
         self.g = Graph(4, 4)
