@@ -6,9 +6,11 @@ If your method unable return a value under certain circumstances, you have two o
 1. **Throwing an exceptions** (Throwing an exception is expensive because the entire stack is captured)
 
 Another option in Java8 is optional. An immutable collection that can hold one element.
+A method that conceptually returns a T but may be unable to do so nder certain circumstances can instead be declared to return an Optional<T>. 
+This allows the method to return an empty result to indicate that it couldn’t return a valid result. 
+An Optional-returning method is more flexible and easier to use than one that throws an exception, and it is less error-prone than one that returns null
 
-An example code
-
+Returns maximum value in collection - throws exception if empty
 ```java
 public static <E extends Comparable<E>> E max(Collection<E> c) {
 	if (c.isEmpty())
@@ -20,6 +22,8 @@ public static <E extends Comparable<E>> E max(Collection<E> c) {
 	return result;
 }
 ```
+
+// Returns maximum value in collection as an Optional<E>
 ```java
 Optional<E> public static <E extends Comparable<E>> Optional<E> max(Collection<E> c) {
 	if (c.isEmpty())
@@ -31,3 +35,6 @@ Optional<E> public static <E extends Comparable<E>> Optional<E> max(Collection<E
 	return Optional.of(result);
 }
 ```
+
+When we should use it?
+Optionals force the user of an API to confront the fact that there may be no value returned.
