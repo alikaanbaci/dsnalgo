@@ -2,6 +2,9 @@ package find_a_corresponding_node;
 
 import tree_node.TreeNode;
 
+/**
+ * Solution of find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree
+ */
 class Solution {
 
     private TreeNode c;
