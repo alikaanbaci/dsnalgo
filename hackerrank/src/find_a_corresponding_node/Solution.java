@@ -12,11 +12,8 @@ class Solution {
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
 
         traverse(original, cloned, target);
-
         return c;
     }
-
-
 
     private void traverse(final TreeNode original, final TreeNode cloned, final TreeNode target) {
 
@@ -27,11 +24,9 @@ class Solution {
             }
 
             getTargetCopy(original.left, cloned.left, target);
-
             getTargetCopy(original.right, cloned.right, target);
-
         }
+
         return;
     }
-
 }

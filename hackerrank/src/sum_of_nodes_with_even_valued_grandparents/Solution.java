@@ -9,7 +9,6 @@ class Solution {
     public int sumEvenGrandparent(TreeNode root) {
 
         traverse(root);
-
         return sum;
     }
 
@@ -35,14 +34,10 @@ class Solution {
             if(deep==0) {
                 sum+=root.val;
                 return;
-
             }
 
             traverse(root.left, deep-1);
             traverse(root.right, deep-1);
-
         }
-
     }
-
 }
