@@ -30,10 +30,8 @@ class Solution {
                 result.add(group);
                 grouped.remove(groupSizes[i]);
             }
-
         }
 
         return result;
     }
-
 }
